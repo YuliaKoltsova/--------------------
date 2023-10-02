@@ -141,7 +141,7 @@
     </div>
     </section>
 
-    <!-- <div class="modal-settings modal">
+    <div class="modal-settings modal">
       <div class="modal-settings__container modal__container">
         <div class="modal-settings__title-container">
           <h2 class="modal-settings__title title">Добавить новый продукт</h2>
@@ -151,8 +151,9 @@
         <label class="modal-settings__label"> Калорий за день:
           <input class="modal-settings__input" type="number">
         </label>
+        <button class="modal-settings__button button">Добавить</button>
       </div>
-    </div> -->
+    </div>
 
     <div class="modal-add-product modal">
       <div class="modal-add-product__container modal__container">
@@ -163,22 +164,24 @@
           </button>
         </div>
         <div class="modal-add-product__add-form">
-          <label class="modal-add-product__label"> Название продукта
-            <input class="modal-add-product__input modal-add-product__input--name">
-          </label>
-          <label class="modal-add-product__label"> Калорийность на 100 грамм продукта
-            <input class="modal-add-product__input modal-add-product__input--calories">
-          </label>
-          <label class="modal-add-product__label"> Белки
-            <input class="modal-add-product__input modal-add-product__input--proteins">
-          </label>
-          <label class="modal-add-product__label"> Жиры
-            <input class="modal-add-product__input modal-add-product__input--fats">
-          </label>
-          <label class="modal-add-product__label"> Углеводы
-            <input class="modal-add-product__input modal-add-product__input--carbohydrates">
-          </label>
-          <button class="modal-add-product__button button">Добавить</button>
+          <form class="modal-add-product__form" method="post" enctype="multipart/form-data" action="#">
+            <label class="modal-add-product__label"> Название продукта
+              <input class="modal-add-product__input modal-add-product__input--name" type="text" required>
+            </label>
+            <label class="modal-add-product__label"> Калорийность на 100 грамм продукта
+              <input class="modal-add-product__input modal-add-product__input--calories" type="number" required>
+            </label>
+            <label class="modal-add-product__label"> Белки
+              <input class="modal-add-product__input modal-add-product__input--proteins" type="number" required>
+            </label>
+            <label class="modal-add-product__label"> Жиры
+              <input class="modal-add-product__input modal-add-product__input--fats" type="number" required>
+            </label>
+            <label class="modal-add-product__label"> Углеводы
+              <input class="modal-add-product__input modal-add-product__input--carbohydrates" type="number" required>
+            </label>
+            <button class="modal-add-product__button button" type="submit">Добавить</button>
+          </form>
         </div>
       </div>
     </div>
@@ -230,7 +233,7 @@
       </div>
       <div class="product-add__characteristic-container">
         <div>
-          <span>В 100 г</span>
+          <span class="product-add__characteristic"><span class="product__characteristic-info product-add__name"></span></span>
           <span class="product-add__characteristic">Калорий: <span class="product__characteristic-info product-add__calories"></span></span>
           <span class="product-add__characteristic">Белки: <span class="product__characteristic-info product-add__proteins"></span></span>
           <span class="product-add__characteristic">Жиры: <span class="product__characteristic-info product-add__fats"></span></span>
