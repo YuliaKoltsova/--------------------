@@ -5,6 +5,9 @@ const proteinsCount = document.querySelector('.chart__info-more--proteins-count'
 const fatsCount = document.querySelector('.chart__info-more--fats-count'); // сюда записываем количество жиров
 const carbohydratesCount = document.querySelector('.chart__info-more--carbohydrates-count'); // сюда записываем количество углеводов
 
+const chartFill = document.querySelector('.chart__line--fill'); // элемент графика потребленных калорий
+
+// Отображение числовых значений
 const getSumm = (array) => {
   if (array.length == 0) {
     currentCalories.textContent = 0;
@@ -48,7 +51,6 @@ const getAllCarbohydrates = (array) => {
   return getSumm(allCarbohydrates);
 }
 
-
 const renderIndicators = (array) => {
   currentCalories.textContent = getAllCalories(array);
   proteinsCount.textContent = getAllProteins(array);
@@ -56,4 +58,25 @@ const renderIndicators = (array) => {
   carbohydratesCount.textContent = getAllCarbohydrates(array);
 }
 
-export {renderIndicators};
+// Отображение графика
+const renderChart = () => {
+  const maxCalories = document.querySelector('.chart__info--max-calories');// находим максимальное количество калорий за день
+  const currentCalories = document.querySelector('.chart__info--current-calories');
+
+  if (Number(maxCalories.textContent) === 0 || (Number(currentCalories.textContent) === 0)) { // Если количество калорий, потребленных за день равно 0, то
+    chartFill.style.width = '0';
+  } else {
+    const widthFill = (Number(currentCalories.textContent) * 100) / Number(maxCalories.textContent);
+    console.log(`"${widthFill}%"`)
+    chartFill.style.width = `${widthFill}%`;
+    chartFill.style.backgroundColor = '#1DB90F';
+
+    if(Number(currentCalories.textContent) >= Number(maxCalories.textContent)) {
+      chartFill.style.width = '100%';
+      chartFill.style.backgroundColor = '#EB2020';
+    }
+  }
+}
+
+
+export {renderIndicators, renderChart};

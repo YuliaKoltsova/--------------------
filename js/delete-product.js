@@ -2,7 +2,7 @@
 import { products } from './modal.js';
 import { dayProducts } from './add-product.js';
 import { saveToLocalStorage } from './save-to-local-storage.js';
-import { renderIndicators } from './render-chart.js';
+import { renderIndicators, renderChart } from './render-chart.js';
 
 const newProductContainer = document.querySelector('.products-add__container'); // место в разметке куда добавляем новые продукты
 const dayProductsContainer = document.querySelector('.day__products'); // место в разметке, куда добавляем продукты за день
@@ -15,6 +15,7 @@ const deleteElement = (currentElement, array) => {
     array.splice(product, 1); //удаляем задачу из массива с задачами
 }
 
+// функция удвления продукта из раздела "добавить продукт"
 const deleteProduct = (evt) => {
   if(evt.target.classList.contains('product__button--delete') || evt.target.classList.contains('product__button-icon')) { // если кликнули на кнопку "удалить", либо на иконку внутри нее, то:
     const currentProduct = evt.target.closest('.product-add'); // находим родительский элемент (продукт)
@@ -24,6 +25,7 @@ const deleteProduct = (evt) => {
   }
 }
 
+// функция удвления продукта из раздела "За сегодня"
 const deleteDayProduct = (evt) => {
   if(evt.target.classList.contains('product__button') || evt.target.classList.contains('product__button-icon')) { // если кликнули на кнопку "удалить", либо на иконку внутри нее, то:
     const currentProduct = evt.target.closest('.product'); // находим родительский элемент (продукт)
@@ -31,6 +33,7 @@ const deleteDayProduct = (evt) => {
     deleteElement (currentProduct, dayProducts); //удаляем продукт из массива в localStorage
     saveToLocalStorage('dayProducts', dayProducts); //сохраняем изменения в localStorage
     renderIndicators(dayProducts);
+    renderChart();
   }
 }
 

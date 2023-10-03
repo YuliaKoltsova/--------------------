@@ -1,7 +1,7 @@
 // добавление продукта из списка продуктов раздел "за сегодня"
 import { saveToLocalStorage } from './save-to-local-storage.js'; // функция для сохранения информации в localStorage
 import { renderDayProduct } from './render-local-storage-info.js'; 
-import { renderIndicators } from './render-chart.js';
+import { renderIndicators, renderChart } from './render-chart.js';
 
 const newProductContainer = document.querySelector('.products-add__container'); // место в разметке куда добавляем новые продукты
 
@@ -43,6 +43,7 @@ const addProduct = (evt) => {
     saveToLocalStorage('dayProducts', dayProducts); // сохраняем данные в localStorage
 
     renderIndicators(dayProducts); // пересчитываем итоговые показатели калорийности и тд
+    renderChart();
   }
 }
 
@@ -58,6 +59,7 @@ dayProducts.forEach((product) => { // отображаем продукты из
 })
 
 renderIndicators(dayProducts);
+renderChart();
 
 
 

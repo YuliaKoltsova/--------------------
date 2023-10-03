@@ -1,5 +1,6 @@
 import { renderNewProduct } from "./render-local-storage-info.js";
 import { saveToLocalStorage } from "./save-to-local-storage.js";
+import { renderChart } from "./render-chart.js";
 
 // модальные окна
 const modalSettings = document.querySelector('.modal-settings'); // модальное окно с настройками
@@ -47,6 +48,7 @@ modalSettingsAddButton.addEventListener('click', () => { // закрытие п�
   modalSettings.style.display = 'none';
   maxCalories.textContent = modalSettingsInput.value; // добавляем значение максимального количества калорий за день из инпута на страницу
   localStorage.setItem('maxCalories', modalSettingsInput.value); // сохраняем значение максимального количества калорий в localStorage
+  renderChart();
 })
 
 
