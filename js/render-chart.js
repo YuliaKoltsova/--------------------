@@ -54,7 +54,10 @@ const getAllCarbohydrates = (array) => {
 
 const renderIndicators = (array) => {
   if (array.length == 0) {
-    return
+    currentCalories.textContent = 0;
+    proteinsCount.textContent = 0;
+    fatsCount.textContent = 0;
+    carbohydratesCount.textContent = 0;
   } else {
     currentCalories.textContent = getAllCalories(array).toFixed(2);
     proteinsCount.textContent = getAllProteins(array).toFixed(2);
