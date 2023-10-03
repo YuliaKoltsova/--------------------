@@ -59,9 +59,16 @@ modalAddProductCloseButton.addEventListener('click', () => { // закрытие
   modalAddProduct.style.display = 'none';
 })
 
-modalAddProductAddButton.addEventListener('click', () => { // закрытие по кнопке добавить
-  modalAddProduct.style.display = 'none';
+modalAddProductAddButton.addEventListener('click', (evt) => { // закрытие по кнопке добавить
+  // если есть пустые инпуты, то окно не закрывается
+  if (addNewProductName.value.trim() === '' || addNewProductCalories.value.trim() === '' || addNewProductProteins.value.trim() === '' || addNewProductFats.value.trim() === '' || addNewProductCarbohydrates.value.trim() === '') {
+    return
+  } else {
+    // если все поля заполнены, то модальное окно закрывается
+    modalAddProduct.style.display = 'none';
+  }
 })
+
 
 // проверяем есть ли в localStorage информация по ключу products и если есть, то выводим продукты на страницу
 if (localStorage.getItem('products')) { 
@@ -76,7 +83,11 @@ products.forEach((product) => { // отображаем продукты из lo
 const addNewProduct = (evt) => {
   evt.preventDefault(); // отменяем отправку формы
 
-  // достаем текст из инпутов
+  if (evt.keyCode == 13) { // отменяем отправку формы по нажатию на ecs
+    evt.preventDefault(); 
+  }
+
+    // достаем текст из инпутов
   const nameProduct = addNewProductName.value;
   const caloriesProduct = addNewProductCalories.value;
   const proteinsProduct = addNewProductProteins.value;
@@ -99,9 +110,16 @@ const addNewProduct = (evt) => {
   // отображаем на странице новый продукт
   renderNewProduct(newProduct);
 
+  // очищаем поля ввода
+  addNewProductName.value = '';
+  addNewProductCalories.value = '';
+  addNewProductProteins.value = '';
+  addNewProductFats.value = '';
+  addNewProductCarbohydrates.value = '';
+
   saveToLocalStorage(); //сохранение данных в localStorage
 }
 
-addNewProductForm.addEventListener('submit', addNewProduct);
+  addNewProductForm.addEventListener('submit', addNewProduct); 
 
 export {products};

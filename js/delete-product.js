@@ -11,7 +11,6 @@ deleteProductButton.forEach(deleteButton => {
 
     //удаляем продукт из массива в localStorage
     const id = currentProduct.id; // определяем id продукта
-    console.log(id);
     const product = products.find(product => product.id == id);// находим в массиве продукт по id
     products.splice(product, 1); //удаляем задачу из массива с задачами
 
