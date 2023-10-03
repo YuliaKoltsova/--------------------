@@ -2,10 +2,10 @@
 import { products } from "./modal.js";
 import { saveToLocalStorage } from "./save-to-local-storage.js";
 
-const deleteProductButton = document.querySelectorAll('.product__button--delete'); // кнопки "удалить" у всех продуктов в списке
+const newProductContainer = document.querySelector('.products-add__container'); // место в разметке куда добавляем новые продукты
 
-deleteProductButton.forEach(deleteButton => {
-  deleteButton.addEventListener('click', (evt) => {
+const deleteProduct = (evt) => {
+  if(evt.target.classList.contains('product__button--delete') || evt.target.classList.contains('product__button-icon')) { // если кликнули на кнопку "удалить", либо на иконку внутри нее, то:
     const currentProduct = evt.target.closest('.product-add'); // находим родительский элемент (продукт)
     currentProduct.remove(); // удаляем продукт со страницы
 
@@ -15,5 +15,7 @@ deleteProductButton.forEach(deleteButton => {
     products.splice(product, 1); //удаляем задачу из массива с задачами
 
     saveToLocalStorage(); //сохраняем изменения в localStorage
-  })
-})
+  }
+}
+
+newProductContainer.addEventListener('click', deleteProduct);

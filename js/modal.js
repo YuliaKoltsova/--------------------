@@ -87,7 +87,7 @@ const addNewProduct = (evt) => {
     evt.preventDefault(); 
   }
 
-    // достаем текст из инпутов
+  // достаем значения из инпутов
   const nameProduct = addNewProductName.value;
   const caloriesProduct = addNewProductCalories.value;
   const proteinsProduct = addNewProductProteins.value;
@@ -120,6 +120,6 @@ const addNewProduct = (evt) => {
   saveToLocalStorage(); //сохранение данных в localStorage
 }
 
-  addNewProductForm.addEventListener('submit', addNewProduct); 
+addNewProductForm.addEventListener('submit', addNewProduct); 
 
 export {products};
