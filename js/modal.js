@@ -117,7 +117,7 @@ const addNewProduct = (evt) => {
   addNewProductFats.value = '';
   addNewProductCarbohydrates.value = '';
 
-  saveToLocalStorage(); //сохранение данных в localStorage
+  saveToLocalStorage('products', products); //сохранение данных в localStorage
 }
 
 addNewProductForm.addEventListener('submit', addNewProduct); 
