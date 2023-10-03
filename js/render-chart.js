@@ -22,7 +22,8 @@ const getSumm = (array) => {
 const getAllCalories = (array) => {
   let allCalories = [];
   array.forEach(product => {
-    allCalories.push(product.calories);
+    allCalories.push(Number(product.calories));
+
   })
   return getSumm(allCalories);
 }
@@ -30,7 +31,7 @@ const getAllCalories = (array) => {
 const getAllProteins = (array) => {
   let allProteins = [];
   array.forEach(product => {
-    allProteins.push(product.proteins);
+    allProteins.push(Number(product.proteins));
   })
   return getSumm(allProteins);
 }
@@ -38,7 +39,7 @@ const getAllProteins = (array) => {
 const getAllFats = (array) => {
   let allFats = [];
   array.forEach(product => {
-    allFats.push(product.calories);
+    allFats.push(Number(product.calories));
   })
   return getSumm(allFats);
 }
@@ -46,16 +47,20 @@ const getAllFats = (array) => {
 const getAllCarbohydrates = (array) => {
   let allCarbohydrates = [];
   array.forEach(product => {
-    allCarbohydrates.push(product.calories);
+    allCarbohydrates.push(Number(product.calories));
   })
   return getSumm(allCarbohydrates);
 }
 
 const renderIndicators = (array) => {
-  currentCalories.textContent = getAllCalories(array);
-  proteinsCount.textContent = getAllProteins(array);
-  fatsCount.textContent = getAllFats(array);
-  carbohydratesCount.textContent = getAllCarbohydrates(array);
+  if (array.length == 0) {
+    return
+  } else {
+    currentCalories.textContent = getAllCalories(array).toFixed(2);
+    proteinsCount.textContent = getAllProteins(array).toFixed(2);
+    fatsCount.textContent = getAllFats(array).toFixed(2);
+    carbohydratesCount.textContent = getAllCarbohydrates(array).toFixed(2);
+  }
 }
 
 // Отображение графика

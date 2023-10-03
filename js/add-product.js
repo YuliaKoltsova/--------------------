@@ -20,10 +20,10 @@ const addProduct = (evt) => {
     const productWeight = Number(currentProduct.querySelector('.product-add__input').value);
 
     // расчет в зависимости от веса
-    const productCaloriesWithWeight = (productCalories * productWeight) / 100;
-    const productProteinsWithWeight = (productProteins * productWeight) / 100;
-    const productFatsWithWeight = (productFats * productWeight) / 100;
-    const productCarbohydratesWithWeight = (productCarbohydrates * productWeight) / 100;
+    const productCaloriesWithWeight = ((productCalories * productWeight) / 100).toFixed(2);
+    const productProteinsWithWeight = ((productProteins * productWeight) / 100).toFixed(2);
+    const productFatsWithWeight = ((productFats * productWeight) / 100).toFixed(2);
+    const productCarbohydratesWithWeight = ((productCarbohydrates * productWeight) / 100).toFixed(2);
 
     // создаем объект с продуктом для раздела "за сегодня"
     const dayProduct = {
