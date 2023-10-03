@@ -90,6 +90,7 @@ const addNewProduct = (evt) => {
     proteins: proteinsProduct,
     fats: fatsProduct,
     carbohydrates: carbohydratesProduct,
+    id: Date.now(),
   }
 
   // добавляем новый продукт в массив с продуктами
