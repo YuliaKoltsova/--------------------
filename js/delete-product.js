@@ -6,7 +6,7 @@ import { renderIndicators, renderChart } from './render-chart.js';
 
 const newProductContainer = document.querySelector('.products-add__container'); // место в разметке куда добавляем новые продукты
 const dayProductsContainer = document.querySelector('.day__products'); // место в разметке, куда добавляем продукты за день
-
+const deleteAllProductsButton = document.querySelector('.day__delete-button'); // кнопка "удалить все" в разделе "за сегодня"
 
 const deleteElement = (currentElement, array) => {
     //удаляем продукт из массива в localStorage
@@ -37,5 +37,20 @@ const deleteDayProduct = (evt) => {
   }
 }
 
+//функция удаления всех продуктов за сегодня
+const deleteallProducts = () => {
+  const allProducts = dayProductsContainer.querySelectorAll('.product');//находим все продукты за сегодня
+  allProducts.forEach(product => { // удаляем из разметки все продукты
+    product.remove()
+  })
+
+  dayProducts.length = 0;// очищаем массив с продуктами за сегодня
+
+  saveToLocalStorage('dayProducts', dayProducts); //сохраняем изменения в localStorage
+  renderIndicators(dayProducts); // отображаем показатели на странице
+  renderChart(); // отображаем график
+}
+
 newProductContainer.addEventListener('click', deleteProduct);
 dayProductsContainer.addEventListener('click', deleteDayProduct);
+deleteAllProductsButton.addEventListener('click', deleteallProducts);

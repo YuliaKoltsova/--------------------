@@ -67,7 +67,6 @@ const renderChart = () => {
     chartFill.style.width = '0';
   } else {
     const widthFill = (Number(currentCalories.textContent) * 100) / Number(maxCalories.textContent);
-    console.log(`"${widthFill}%"`)
     chartFill.style.width = `${widthFill}%`;
     chartFill.style.backgroundColor = '#1DB90F';
 
