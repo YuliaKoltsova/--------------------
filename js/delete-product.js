@@ -2,6 +2,7 @@
 import { products } from './modal.js';
 import { dayProducts } from './add-product.js';
 import { saveToLocalStorage } from './save-to-local-storage.js';
+import { renderIndicators } from './render-chart.js';
 
 const newProductContainer = document.querySelector('.products-add__container'); // место в разметке куда добавляем новые продукты
 const dayProductsContainer = document.querySelector('.day__products'); // место в разметке, куда добавляем продукты за день
@@ -29,6 +30,7 @@ const deleteDayProduct = (evt) => {
     currentProduct.remove(); // удаляем продукт со страницы
     deleteElement (currentProduct, dayProducts); //удаляем продукт из массива в localStorage
     saveToLocalStorage('dayProducts', dayProducts); //сохраняем изменения в localStorage
+    renderIndicators(dayProducts);
   }
 }
 

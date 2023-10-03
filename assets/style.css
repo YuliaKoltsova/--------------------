@@ -201,10 +201,15 @@
   margin-bottom: 10px;
 }
 
-.chart__info {
+.chart__info,
+.chart__info-more {
   color: #ffffff;
 }
 
+.chart__info-more {
+  display: flex;
+  flex-direction: column;
+}
 /* Кнопка */
 .button {
   border: none;

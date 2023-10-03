@@ -1,10 +1,11 @@
 // добавление продукта из списка продуктов раздел "за сегодня"
 import { saveToLocalStorage } from './save-to-local-storage.js'; // функция для сохранения информации в localStorage
-import { renderDayProduct } from './render-localStorage-info.js' 
+import { renderDayProduct } from './render-local-storage-info.js'; 
+import { renderIndicators } from './render-chart.js';
 
 const newProductContainer = document.querySelector('.products-add__container'); // место в разметке куда добавляем новые продукты
 
-const dayProducts = [];
+let dayProducts = [];
 
 const addProduct = (evt) => {
   if(evt.target.classList.contains('product-add--add')) { // если кликнули на кнопку + в карточке продукта, то:
@@ -40,9 +41,25 @@ const addProduct = (evt) => {
     renderDayProduct(dayProduct); // добавляем продукт на страницу
 
     saveToLocalStorage('dayProducts', dayProducts); // сохраняем данные в localStorage
+
+    renderIndicators(dayProducts); // пересчитываем итоговые показатели калорийности и тд
   }
 }
 
 newProductContainer.addEventListener('click', addProduct);
+
+// проверяем есть ли в localStorage информация по ключу dayProducts и если есть, то выводим продукты на страницу
+if (localStorage.getItem('dayProducts')) { 
+  dayProducts = JSON.parse(localStorage.getItem('dayProducts'));
+}
+
+dayProducts.forEach((product) => { // отображаем продукты из localStorage на странице
+  renderDayProduct(product);
+})
+
+renderIndicators(dayProducts);
+
+
+
 
 export {dayProducts};

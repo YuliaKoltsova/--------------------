@@ -1,4 +1,4 @@
-import { renderNewProduct } from "./render-localStorage-info.js";
+import { renderNewProduct } from "./render-local-storage-info.js";
 import { saveToLocalStorage } from "./save-to-local-storage.js";
 
 // модальные окна
